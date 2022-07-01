@@ -44,27 +44,23 @@
   "groups": [
     {
       "id": "1",
-      "name": "Colleague"
+      "name": "commedy"
     },
     {
       "id": "2",
-      "name": "Friend"
+      "name": "competition"
     },
     {
       "id": "3",
-      "name": "Family"
+      "name": "KittyParty"
     },
     {
       "id": "4",
-      "name": "Service"
+      "name": "GetToGether"
     },
     {
       "id": "5",
-      "name": "Community"
-    },
-    {
-      "id": "6",
-      "name": "Social"
+      "name": "Meeting"
     }
   ]
 }
