@@ -7,7 +7,7 @@ export default function ContactUs(){
 
   function sendEmail(e){
       e.preventDefault();
-    emailjs.sendForm('service_al7e4f7', 'template_881ri8f', form.current, 'Xu3U46g2Fyo6g21HB')
+    emailjs.sendForm('SERVICEID', 'TEMPLATEID', form.current, 'PUBLICID')
       .then((result) => {
           console.log(result.text);
       }, (error) => {
