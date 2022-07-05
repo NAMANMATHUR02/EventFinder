@@ -112,7 +112,7 @@ let EventList = ()=>{
                                 <div className="col">
                                 <div className="mb-2">
                                         <input
-                                            Eventname="text"
+                                            name="text"
                                             value={query.text}
                                             onChange={searchEvents}
                                          type="text" className="form-control" placeholder="search Names"/>
