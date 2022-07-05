@@ -1,5 +1,5 @@
 import React, {useState,useEffect} from "react";
-import {Link,Navigate,resolvePath,useNavigate,useParams} from 'react-router-dom';
+import {Link,useNavigate,useParams} from 'react-router-dom';
 import { EventService } from "../../../services/EventService";
 import Spinner from "../../spinner/Spinner";
 
@@ -12,9 +12,9 @@ let EditEvent = ()=>{
         event : {
             name : '',
             photo : '',
-            mobile : '',
+            date : '',
             email : '',
-            company : '',
+            location : '',
             title : '',
             groupId : '' 
         }, 
@@ -44,12 +44,13 @@ let EditEvent = ()=>{
     // },[eventId]);
     useEffect(()=>{
         async function fetchData(){
-            const response=await EventService.getAllEvents(eventId);
+            const response=await EventService.getEvent(eventId);
             const groupResponse=await EventService.getGroups();
             setState({
                             ...state,
                             loading: false,
-                            events: response.data,
+                            event: response.data,
+                            groups: groupResponse.data,
                             filteredEvents : response.data
                         });
         }
@@ -59,7 +60,7 @@ let EditEvent = ()=>{
     let updateInput = (event)=>{
         setState({
             ...state,
-            event: {
+            event: { 
                 ...state.event,
                 [event.target.name] : event.target.value
             }
@@ -71,12 +72,12 @@ let EditEvent = ()=>{
         try{
             let response = await EventService.updateEvent(state.event,eventId);
             if(response){
-                navigate('/',{replace: true});
+                navigate('/events/list',{replace: true});
             }
         }
         catch(error){
             setState({...state,errorMessage:error.message});
-            navigate('/events/edit/${eventId}',{replace:false});
+            navigate(`/events/edit/${eventId}`,{replace:false});
         }
     };
 
@@ -91,7 +92,7 @@ let EditEvent = ()=>{
                     <div className="row">
                         <div className="col">
                             <p className="h3 text-primary fw-bold">Edit Event</p>
-                            <p className="fst-italic">Lorem20 hdsvbhjbve jwoehio vixn njkadsbv naman mathur dknvebgkslw ei</p>
+                            <p className="fst-italic fw-bold">To improve is to change; to be perfect is to change often </p>
                         </div>
                     </div>
                     <div className="row align-items-center">
@@ -116,10 +117,10 @@ let EditEvent = ()=>{
                                 <div className="mb-2">
                                     <input
                                         required={true}
-                                        name="mobile"
-                                        value={event.mobile}
+                                        name="date"
+                                        value={event.date}
                                         onChange={updateInput}
-                                     type="number" className="form-control" placeholder="Mobile"/>
+                                     type="date" className="form-control" placeholder="Date"/>
                                 </div>
                                 <div className="mb-2">
                                     <input
@@ -128,12 +129,12 @@ let EditEvent = ()=>{
                                         value={event.email}
                                         onChange={updateInput}
                                      type="email" className="form-control" placeholder="Email"/>
-                                </div>
+                                   </div>
                                 <div className="mb-2">
                                     <input
                                         required={true}
-                                        name="company"
-                                        value={event.company}
+                                        name="location"
+                                        value={event.location}
                                         onChange={updateInput}
                                      type="text" className="form-control" placeholder="Location"/>
                                 </div>
@@ -147,7 +148,7 @@ let EditEvent = ()=>{
                                 </div>
                                 <div className="mb-2">
                                         <select
-                        //                    required={true}
+//                                            required={true}
                                             name="groupId"
                                             value={event.groupId}
                                             onChange={updateInput}

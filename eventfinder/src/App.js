@@ -6,13 +6,13 @@ import EventList from "./components/events/EventList/EventList";
 import AddEvent from "./components/events/AddEvent/AddEvent";
 import EditEvent from "./components/events/EditEvent/EditEvent";
 import ViewEvent from "./components/events/ViewEvent/ViewEvent";
-import Spinner from "./components/spinner/Spinner";
 import ContactForm from "./components/ContactForm/ContactForm";
+import Spinner from './components/spinner/Spinner';
 
 let App=()=>{
   return (
     <React.Fragment>
-      
+    
       <NavBar/>
       <Routes>
         <Route path={'/'} element={<Navigate to={'/events/list'}/>}/>

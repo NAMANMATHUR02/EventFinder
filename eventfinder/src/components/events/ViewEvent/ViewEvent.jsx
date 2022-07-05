@@ -10,7 +10,7 @@ let ViewEvent = ()=>{
 
     let [state,setState] = useState( {
         loading: false,
-        event : [],
+        event : {},
         errorMessage : '',
         group:{}
 
@@ -63,7 +63,7 @@ let ViewEvent = ()=>{
                     <div className="row">
                         <div className="col">
                             <p className="h3 text-warning fw-bold">View Event</p>
-                            <p className="fst-italic">Lorem20 sbcjkwbc askjbc jkdblje wnaman vjebfjbjbjvb bkvsbmvb jkswkb</p>
+                            <p className="fst-italic">When you see events as just 'happenings' rather than as doings, you are liberated right away</p>
                         </div>
                     </div>
                 </div>
@@ -85,13 +85,13 @@ let ViewEvent = ()=>{
                                 Event Name : <span className="fw-bold">{event.name}</span>
                             </li>
                             <li className="list-group-item list-group-item-action">
-                                Mobile Number : <span className="fw-bold">{event.mobile}</span>
+                                Date : <span className="fw-bold">{event.date}</span>
                             </li>
                             <li className="list-group-item list-group-item-action">
                                Email : <span className="fw-bold">{event.email}</span>
                             </li>
                             <li className="list-group-item list-group-item-action">
-                            location : <span className="fw-bold">{event.company}</span>
+                            location : <span className="fw-bold">{event.location}</span>
                             </li>
                             <li className="list-group-item list-group-item-action">
                                Title : <span className="fw-bold">{event.title}</span>

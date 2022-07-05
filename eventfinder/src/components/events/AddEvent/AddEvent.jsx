@@ -9,9 +9,9 @@ let AddEvent = ()=>{
         event : {
             name : '',
             photo : '',
-            mobile : '',
+            date : '',
             email : '',
-            company : '',
+            location : '',
             title : '',
             groupId : '' 
         },
@@ -55,7 +55,7 @@ let AddEvent = ()=>{
             setState({
                             ...state,
                             loading: false,
-                            events: response.data,
+                            groups: response.data,
                             filteredEvents : response.data
                         });
         }
@@ -73,7 +73,7 @@ let AddEvent = ()=>{
         }
         catch(error){
             setState({...state, errorMessage:error.message});
-            navigate('/event/add',{replace: false});
+            navigate('/events/add',{replace: false});
         }
     };
 
@@ -102,7 +102,7 @@ let AddEvent = ()=>{
                                     name="name"
                                     value={event.name}
                                     onChange={updateInput}
-                                    
+                                     
                                     type="text" className="form-control" placeholder="Event Name"/>
                                 
                                 </div>
@@ -117,11 +117,11 @@ let AddEvent = ()=>{
                                 <div className="mb-2">
                                     <input
                                     required={true}
-                                    name="mobile"
-                                    value={event.mobile}
+                                    name="date"
+                                    value={event.date}
                                     onChange={updateInput}
 
-                                     type="number" className="form-control" placeholder="Mobile"/>
+                                     type="date" className="form-control" placeholder="Date"/>
                                 </div>
                                 <div className="mb-2">
                                     <input
@@ -134,8 +134,8 @@ let AddEvent = ()=>{
                                 <div className="mb-2">
                                     <input
                                     required={true}
-                                    name="company"
-                                    value={event.company}
+                                    name="location"
+                                    value={event.location}
                                     onChange={updateInput}
                                      type="text" className="form-control" placeholder="Location"/>
                                 </div>
@@ -160,7 +160,7 @@ let AddEvent = ()=>{
                                                     groups.map(group=>{
                                                         return(
                                                             <option key={group.id} value={group.id}>{group.name}</option>
-                                                        ) 
+                                                        )       
                                                     })
                                             }
                                         </select>

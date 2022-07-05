@@ -78,9 +78,9 @@ let EventList = ()=>{
 
     let searchEvents=(event)=>{
         setQuary({...query, text:event.target.value});
-        let theEvents = state.event.filter(events=>{
-            return events.Eventname.toLowerCase().include(event.target.value.toLowerCase())
-        })
+        let theEvents = state.events.filter(event=>{
+            return event.name.toLowerCase().includes(event.target.value.toLowerCase())
+        });
         setState({
             ...state,
           filteredEvents: theEvents
@@ -154,10 +154,10 @@ let EventList = ()=>{
                                                 Event Name : <span className="fw-bold">{event.name}</span>
                                             </li>
                                             <li className="list-group-item list-group-item-action">
-                                                Mobile Number : <span className="fw-bold">{event.mobile}</span>
+                                                Date : <span className="fw-bold">{event.date}</span>
                                             </li>
                                             <li className="list-group-item list-group-item-action">
-                                                Email : <span className="fw-bold">{event.email}</span>
+                                                location : <span className="fw-bold">{event.company}</span>
                                             </li>
                                         </ul>
                                     </div>

@@ -8,7 +8,7 @@ let NavBar = ()=>{
         <nav className="navbar navbar-dark bg-dark navbar-expand-sm">
             <div className="container">
                 <Link to={'/'} className="navbar-brand">
-                    <i className="fa fa-mobile text-warning"/> Events <span className="text-warning">Manager</span></Link>
+                    <i className="fa fa-mobile text-warning"/> Events <span className="text-warning">Finder</span></Link>
                 <Link to={'/ContactForm'} className="navbar-brand">InvitationForm</Link>
             </div>
         </nav>
