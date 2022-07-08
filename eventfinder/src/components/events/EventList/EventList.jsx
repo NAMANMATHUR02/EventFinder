@@ -5,7 +5,7 @@ import Spinner from "../../spinner/Spinner";
 
 let EventList = ()=>{
 
-    let [query,setQuary]= useState({
+    let [query,setQuery]= useState({
         text : ''
     });
 
@@ -77,12 +77,12 @@ let EventList = ()=>{
 
 
     let searchEvents=(event)=>{
-        setQuary({...query, text:event.target.value});
+        setQuery({...query, text:event.target.value});
         let theEvents = state.events.filter(event=>{
             return event.name.toLowerCase().includes(event.target.value.toLowerCase())
         });
         setState({
-            ...state,
+            ...state, 
           filteredEvents: theEvents
         });
     };
@@ -93,6 +93,7 @@ let EventList = ()=>{
         <React.Fragment>
 
             <section className="event-search">
+            
                 <div className="container">
                     <div className="grid">
                         <div className="row">
@@ -139,11 +140,11 @@ let EventList = ()=>{
                     <div className="row">
                     {
                         filteredEvents.length > 0 &&
-                            filteredEvents.map(event=>{
+                        filteredEvents.map(event=>{
                                 return (
-                                    <div className="col-md-6" key={event.id}>
+                            <div className="col-md-6" key={event.id}>
                             <div className="card my-2">
-                                <div className="card-body">
+                                <div className="card-body ">
                                     <div className="row align-items-center d-flex justify-content-around">
                                     <div className="col-md-4">
                                         <img src={event.photo} alt="" className="event-img"/>
@@ -159,16 +160,19 @@ let EventList = ()=>{
                                             <li className="list-group-item list-group-item-action">
                                                 location : <span className="fw-bold">{event.company}</span>
                                             </li>
+                                            <li className="list-group-item list-group-item-action">
+                                                Title : <span className="fw-bold">{event.title}</span>
+                                            </li>
                                         </ul>
                                     </div>
-                                    <div className="col-md-1 d-flex flex-column align-items-center" >
-                                        <Link to={`/events/view/${event.id}`} className="btn btn-warning my-1">
+                                    <div className="d-flex justify-content-center" >
+                                        <Link to={`/events/view/${event.id}`} className="btn btn-warning ">
                                             <i className="fa fa-eye"/>
                                         </Link>
-                                        <Link to={`/events/edit/${event.id}`} className="btn btn-primary my-1">
+                                        <Link to={`/events/edit/${event.id}`} className="btn btn-primary">
                                             <i className="fa fa-pen"/>
                                         </Link>
-                                        <button  className="btn btn-danger my-1" onClick={()=>clickDelete(event.id)}>
+                                        <button  className="btn btn-danger" onClick={()=>clickDelete(event.id)}>
                                             <i className="fa fa-trash"/>
                                         </button>
                                     </div>
@@ -191,5 +195,4 @@ let EventList = ()=>{
     )
 };
 export default EventList;  
-
 
